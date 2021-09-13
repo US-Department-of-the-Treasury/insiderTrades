@@ -27,7 +27,7 @@ All of the functions have the ability to use key words to determine if a transac
 * rptOwnerKeywords - This criteria searches the reporting owners information (includes CIK, name, address, city, state, and zip code). Note that all the text is capitalized. The structure of the name is LAST FIRST M. The address information is structured into separate lines of address, city, state, and zip code.
 * issuerKeywords - This criteria searches the issuers information which includes the CIK and the name of the firm. The text is all capitalized.
 * issuerTradingSymbol - This criteria searches the issuer's trading symbol. The text is all capitalized.
-* transactionType - This criteria searches the transaction's type. Examples include G for gifts and J for Other. A full list can be found [here](https://www.sec.gov/files/forms-3-4-5.pdf).
+* transactionType - This criteria searches the transaction's type. Examples include G for gifts and J for Other. A full list of the transaction codes can be found in the SEC Office of Investor Education and Advocacy Investor Bulletin ["Insider Transactions and Forms 3, 4, and 5"](https://www.sec.gov/files/forms-3-4-5.pdf).
 
 An important item of note is that a transaction will be included as long as it fulfills only one of the key words. Thus a good way to think about the key words is that they are connected by OR rather than by AND. Thus any transaction that contains "gift" or "charity" or "charitable" in the footnotes or contains the name "SMITH" or is a gift transaction will be included. 
 
