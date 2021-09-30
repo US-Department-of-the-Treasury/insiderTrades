@@ -81,7 +81,7 @@ returns an integer value greater than 0 if one of the key word criterias is
 met. This function is specifically for the
 \code{\link{derivativeTransactionsScrape}} and
 \code{\link{derivativeTransactionsPullAndScrape}} functions. The function
-shares the same paramters as
+shares the same parameters as
 \code{\link{formFilterNonderivativeTransactions}} (filing,
 footnoteKeywords, issuerKeywords, issuerTradingSymbol, rptOwnerKeywords,
 transactionType). The only difference is within the parsing commands which
@@ -92,7 +92,7 @@ returns an integer value greater than 0 if one of the key word criterias is
 met. This function is specifically for the
 \code{\link{nonderivativeHoldingsScrape}} and
 \code{\link{nonderivativeHoldingsPullAndScrape}} functions. The function
-shares the same paramters as
+shares the same parameters as
 \code{\link{formFilterNonderivativeTransactions}} (filing,
 footnoteKeywords, issuerKeywords, issuerTradingSymbol, rptOwnerKeywords)
 except for transactionType since that isn't a criteria for a nonderivative
@@ -104,7 +104,7 @@ returns an integer value greater than 0 if one of the key word criterias is
 met. This function is specifically for the
 \code{\link{derivativeHoldingsScrape}} and
 \code{\link{derivativeHoldingsPullAndScrape}} functions. The function
-shares the same paramters as
+shares the same parameters as
 \code{\link{formFilterNonderivativeHoldings}} (filing,
 footnoteKeywords, issuerKeywords, issuerTradingSymbol, rptOwnerKeywords)
 except for transactionType since that isn't a criteria for a derivative
