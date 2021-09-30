@@ -1,0 +1,159 @@
+---
+title: "Introduction to insiderTrades"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{insiderTrades}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+```{r, include=FALSE}
+devtools::load_all(".")
+```
+## Introduction 
+Welcome the the beginner vignette for the insiderTrades package. It is best to start here if this is your first time. You'll be introduced to how the functions work together and shown what the output dataframe contains. If you decide insiderTrades provides the necessary functionality, please refer to the pullAndScrape Vignette. This will introduce you to how to use keyword criteria to pull only certain transactions and the “pullAndScrape” family of functions.
+
+The SEC requires insiders, who are defined as officers, directors, and those that hold more than 10% of any class of a company's securities, to report purchase sales, and holdings. The insiders report any transactions by Form 4 within two business days of the transaction. An insider must file a Form 5 within 45 days of the fiscal year end if any transactions were not reported on a Form 4 during the fiscal year because 1) exemption to filing or 2) a failure to file a Form 4. 
+
+## Installation 
+
+Release version [(CRAN)](https://CRAN.R-project.org/package=insiderTrades)
+
+```{r install, eval=FALSE}
+install.packages("insiderTrades")
+```
+
+Development version [(GitHub)](https://github.com/US-Department-of-the-Treasury/insiderTrades):
+
+```{r install2, eval=FALSE}
+library(devtools)
+devtools::install_github("US-Department-of-the-Treasury/insiderTrades")
+```
+
+## Downloading the Form 4 and Form 5 filing text files
+The first step of scraping and wrangling the unstructured SEC data into a dataframe is to first collect all of the text file URLs. The function secUrlDownload conveniently does this with three mandatory arguments:
+
+* Quarter
+* Year
+* Form Type (4 or 5)
+
+How the SEC repository is structured is that the text files are organized by quarter and year.
+
+```{r, eval=FALSE}
+library(insiderTrades)
+
+tempIndex <- insiderTrades::secUrlDownload(quarter = 1, year = 2021, form = 4, name = "Your Name", "YourEmail@address.com")
+
+```
+
+Since it takes 22-24 hours for the functions to check for keywords and wrangle the desired transactions into a dataframe, I limit the number of URLs to 100 total for this vignette.
+
+```{r, eval=FALSE}
+urlIndex <- tempIndex[1:100,]
+```
+
+Now that we have a object containing all of the Form 4 URLs for Q1 2021, we can use the following family of scrapers:
+
+* nonderivativeTransactionsScrape
+* derivativeTransactionsScrape
+* nonderivativeHoldingsScrape
+* derivativeHoldingsScrape
+
+### nonderivativeTransactionsScrape
+This function takes the URL link, pulls the text filing and wrangles into a dataframe any non-derivative transactions that meet the keyword criteria. For simplicity sake, no keywords are used in this example. An important item to note is that the form type you pulled using the secUrlDownload must match with the form argument in nonderivativeTransactionsScrape. Otherwise, the function will struggle to correctly wrangle the unstructured data. Additionally, if you edit the resulting object of secUrlDownload, ensure that the third column remains the URL since that column location is a primary key for the scraper.
+
+The SEC requires you to include either your name and email in the request header. This is provided through the name and email arguments.
+```{r, eval=FALSE}
+nonderivativeTrans <- insiderTrades::nonderivativeTransactionsScrape(index = urlIndex, form = 4, name = "Your Name", email = "YourEmail@YourEmail.com")
+```
+
+The first several columns cover general information about when the Form 4 or 5 was filed and the issuer, which is the company whose securities are part of the transaction.
+
+* periodOfReport
+* issuerCik
+* issuerName
+
+The next several columns cover information about the insider who conducted the transaction involving the securities.
+
+* rptOwnerCik
+* rptOwnerName
+* rptOwnerState
+* rptOwnerZipCode
+* isDirector
+* isOfficer
+* isTenPercentOwner
+* isOther
+* officerTitle
+
+The following columns contain information about the transaction.
+
+* securityTitle
+* transactionDate
+* transactionFormType
+* equitySwapInvolved
+* transactionShares
+* transactionPricePerShare
+* transactionAcquiredDiposedCode
+* sharesOwnedFollowingTransaction
+* directOrIndirectOwnership
+* transactionCode
+* natureOfOwnership
+
+The last set of columns contain any footnotes associated with the specific transaction. The function has the ability to include up to thirty footnotes associated with a single transaction.
+
+These URLs can change when amended forms are submitted and should be thought of as existing in a single point in time rather than part of an immutable database.
+
+The next column is "manyPeopleManyTransactions." This column contains the URL if the filing had more than one rptOwner and multiple transactions. This is a warning indicator that the user must manually view this transaction and correctly assign the correct relationship between entities and transactions.
+
+The last column is "Notes." Possible note values are the following:
+
+* "The transaction values in this observation is an aggregate amount that is shared by the other observations that share the same URL."
+
+This message means that there were many entities and one transaction in a filing. How this is reflected in the dataframe is that each entity has its own observation row but the transaction amounts are the same across each of these observation rows. The user should check the text file and footnotes to make their own determination on how to structure a filing like this.
+
+* "This transaction may not be a valid to key word conditions based upon the structure of many reporting owners. This transaction must be checked by hand."
+
+This message means that there were many entities and many transactions in a filing. How it is reflected in the dataframe is that the information about the issuing company is included (periodOfReport, issuerCik, issuerName) and the information about the transaction and the associated footnotes is included. The user must first decide if the transaction is valid based upon their initial key word conditions if they used any rptOwnerKeywords key words and then second, determine which entity the transaction belongs to.
+
+### derivativeTransactionsScrape
+Derivative transactions have additional information compared to non-derivative transactions which requires a separate scraper. Beyond the same columns in the non-derivative scraper, the derivative transaction scraper output also includes:
+
+* underlyingSecurityShares
+* underlyingSecurityTitle
+* expirationDate
+* exerciseDate
+* conversionOrExercisePrice
+
+### nonderivativeHoldingsScrape & derivativeHoldingsScrape
+Form 4 and Form 5 holding filings contain information on securities an insider currently possesses rather than a transaction that has occurred. Thus, there are fewer columns in the resulting dataframe concerning information about the security compared to non-derivative and derivative transactions. The dataframe still contains information on the issuer, the reporting owner, and the associated footnotes. 
+
+The columns related to the holding of non-derivative securities is as follows:
+
+* securityTitle
+* sharesOwnedFollowingTransaction
+* directOrIndirectOwnership
+* natureOfOwnership
+
+The columns related to the holding of derivative securities is as follows:
+
+* securityTitle
+* conversionOrExercisePrice
+* exerciseDate
+* expirationDate
+* underlyingSecurityTitle
+* underlyingSecurityShares
+* sharesOwnedFollowingTransaction
+* directOrIndirectOwnership
+* natureOfOwnership
+
+## Wrap-up
+
+If you decide this package fits your needs, please check out the next vignette, titled "pullAndScrape." This vignette tackles a family of functions that integrate both the pull of the URLs from the SEC, and the subsequent scraping and wrangling of the unstructured data into a dataframe. It will additionally demonstrate how to utilize keyword criteria to pull only certain transactions.
+
+
