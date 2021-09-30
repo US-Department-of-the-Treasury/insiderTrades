@@ -32,15 +32,15 @@ words to be searched in the form's footnotes. Default is NA.}
 
 \item{issuerKeywords}{The character vector containing any specified key
 words to be searched within the issuer block. Criteria can include the firms
-CIK or name. Values must be captilized to match against SEC values.
+CIK or name. Values must be capitalized to match against SEC values.
 Default value is NA.}
 
 \item{issuerTradingSymbol}{The character vector containing any specified
-stock tickers.  Values must be captilized to match against SEC values.
+stock tickers.  Values must be capitalized to match against SEC values.
 Default value is NA.}
 
 \item{rptOwnerKeywords}{The character vector contianing any specified key
-words to be searched within the rptOwner block.  Values must be captilized
+words to be searched within the rptOwner block.  Values must be capitalized
 to match against SEC values. Additionally, the format is LAST NAME, FIRST
 NAME. The criteria can include the individuals CIK, address, or name.
 Default value is NA.}
