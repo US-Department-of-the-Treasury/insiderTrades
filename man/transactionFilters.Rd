@@ -73,17 +73,17 @@ transactionFilters
 \note{
 \code{transactionFilterNonderivative} parses a transaction contained
 in the filing and returns an integer value greater than 0 if one of the
-transaction specific key word criteras or form specific key word criteras
+transaction specific key word criterias or form specific key word criterias
 is met.This function is specifically for the
 \code{\link{nonderivativeTransactionsScrape}} and
 \code{\link{nonderivativeTransactionsPullAndScrape}} functions.
 
 \code{transactionFilterDerivative} parses a transaction contained
 in the filing and returns an integer value greater than 0 if the
-transaction contains one of the specific key word criteras or if the
+transaction contains one of the specific key word criterias or if the
 key word criteria cannot be applied at the transaction level (
 rptOwnerKeywords or issuerKeywords for example), but the form contains
-form specific key word critera. This function is specifically for the
+form specific key word criterias. This function is specifically for the
 \code{\link{derivativeTransactionsScrape}} and
 \code{\link{derivativeTransactionsPullAndScrape}} functions. The function
 shares the same paramters as
@@ -94,10 +94,10 @@ use the key word derivative rather than nonderivative.
 
 \code{transactionFilterNonderivativeHoldings} parses a transaction
 contained in the filing and returns an integer value greater than 0 if the
-transaction contains one of the specific key word criteras or if the
+transaction contains one of the specific key word criterias or if the
 key word criteria cannot be applied at the transaction level (
 rptOwnerKeywords or issuerKeywords for example), but the form contains
-form specific key word critera. This function is specifically for the
+form specific key word criterias. This function is specifically for the
 \code{\link{nonderivativeHoldingsScrape}} and
 \code{\link{nonderivativeHoldingsPullAndScrape}} functions. The function
 shares the same paramters as
@@ -109,10 +109,10 @@ holding information rather than transaction information.
 
 \code{transactionFilterDerivativeHoldings} parses a transaction
 contained in the filing and returns an integer value greater than 0 if the
-transaction contains one of the specific key word criteras or if the
+transaction contains one of the specific key word criterias or if the
 key word criteria cannot be applied at the transaction level (
 rptOwnerKeywords or issuerKeywords for example), but the form contains
-form specific key word critera. This function is specifically for the
+form specific key word criterias. This function is specifically for the
 \code{\link{derivativeHoldingsScrape}} and
 \code{\link{derivativeHoldingsPullAndScrape}} functions. The function
 shares the same paramters as
