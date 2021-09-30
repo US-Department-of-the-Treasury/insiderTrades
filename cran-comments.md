@@ -10,6 +10,7 @@ There were no ERRORs or WARNINGs.
 There was 1 NOTE:
 
 * checking CRAN incoming feasibility ... NOTE
+  
   Maintainer: ‘Joseph Hancuch <joseph.hancuch@treasury.gov>’
 
   New submission
