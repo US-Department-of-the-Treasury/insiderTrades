@@ -10,6 +10,12 @@ There were no ERRORs or WARNINGs.
 There was 1 NOTE:
 
 * checking CRAN incoming feasibility ... NOTE
+  Maintainer: ‘Joseph Hancuch <joseph.hancuch@treasury.gov>’
+
+  New submission
+
+  Possibly misspelled words in DESCRIPTION:
+    NoSQL (3:32, 11:28)
 
 ## Downstream dependencies
 There are no downstream dependencies. 
