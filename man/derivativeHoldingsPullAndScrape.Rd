@@ -53,7 +53,7 @@ observations can be grouped by form through the URL variable within the
 dataframe.
 }
 \description{
-The function takes the specifieid quarter (1-4), year (2004-
+The function takes the specified quarter (1-4), year (2004-
 2021), and form type (4 or 5) and returns a dataframe of all
 the derivative holdings that meet the keyword criteria from the
 specified financial quarter. If no criteria is set, all holdings from
