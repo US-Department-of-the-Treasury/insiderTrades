@@ -72,12 +72,12 @@ formFilters
 \note{
 \code{formFilterNonderivativeTransactions} parses the form and
 returns an integer value greater than 0 if one of the key word
-criteras is met. This function is specifically for the
+criterias is met. This function is specifically for the
 \code{\link{nonderivativeTransactionsScrape}} and
 \code{\link{nonderivativeTransactionsPullAndScrape}} functions.
 
 \code{formFilterDerivativeTransactions} parses the form and
-returns an integer value greater than 0 if one of the key word criteras is
+returns an integer value greater than 0 if one of the key word criterias is
 met. This function is specifically for the
 \code{\link{derivativeTransactionsScrape}} and
 \code{\link{derivativeTransactionsPullAndScrape}} functions. The function
@@ -88,7 +88,7 @@ transactionType). The only difference is within the parsing commands which
 use the key word derivative rather than nonderivative.
 
 \code{formFilterNonderivativeHoldings} parses the form and
-returns an integer value greater than 0 if one of the key word criteras is
+returns an integer value greater than 0 if one of the key word criterias is
 met. This function is specifically for the
 \code{\link{nonderivativeHoldingsScrape}} and
 \code{\link{nonderivativeHoldingsPullAndScrape}} functions. The function
@@ -100,7 +100,7 @@ holdings. Additionally, parsing criteria is different due to targeting
 holding information rather than transaction information.
 
 \code{formFilterDerivativeHoldings} parses the form and
-returns an integer value greater than 0 if one of the key word criteras is
+returns an integer value greater than 0 if one of the key word criterias is
 met. This function is specifically for the
 \code{\link{derivativeHoldingsScrape}} and
 \code{\link{derivativeHoldingsPullAndScrape}} functions. The function
