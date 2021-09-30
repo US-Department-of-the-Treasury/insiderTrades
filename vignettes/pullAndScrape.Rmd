@@ -1,0 +1,67 @@
+---
+title: "Introduction to the pullAndScrape Family of Functions and Utilizing Key Words"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{pullAndScrape}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+```{r, include=FALSE}
+devtools::load_all(".")
+```
+## Introduction 
+Welcome the the second vignette for the insiderTrades package. If it is your first time using the package, it is best to read through the insiderTrades vignette which will introduce you to the different types of transactions (and the associated scrapers) and the variables that are included in the final dataframe. This vignette builds upon the insiderTrades vignette in two ways. First, the family of scrapers that integrate both the pull from the SEC website and the scrape are introduced. Second, how to use key words in determining which filings to scrape is introduced.
+
+## Installation 
+
+Release version [(CRAN)](https://CRAN.R-project.org/package=insiderTrades)
+
+```{r install, eval=FALSE}
+install.packages("insiderTrades")
+```
+
+Development version [(GitHub)](https://github.com/US-Department-of-the-Treasury/insiderTrades):
+
+```{r install2, eval=FALSE}
+library(devtools)
+devtools::install_github("US-Department-of-the-Treasury/insiderTrades")
+```
+
+## pullAndScrape Family of Functions
+The functions that integrate both the pull from SEC and the scraping are the following:
+
+* nonderivativeTransactionsPullAndScrape
+* nonderivativeHoldingsPullAndScrape
+* derivativeTransactionsPullAndScrape
+* derivativeHoldingsPullAndScrape
+
+## Using Key Words
+All of the scraping functions (not just the pullAndScrape functions) have the ability to use key words to determine if a transaction should be included in the final dataframe. The different types of keywords are the following:
+
+* footnoteKeywords - This criteria searches the footnote(s) associated with a transaction. The footnotes follow normal capitalization rules.
+* rptOwnerKeywords - This criteria searches the reporting owners information (includes CIK, name, address, city, state, and zip code). Note that all the text is capitalized. The structure of the name is LAST FIRST M. The address information is structured into separate lines of address, city, state, and zip code.
+* issuerKeywords - This criteria searches the issuers information which includes the CIK and the name of the firm. The text is all capitalized.
+* issuerTradingSymbol - This criteria searches the issuer's trading symbol. The text is all capitalized.
+* transactionType - This criteria searches the transaction's type. Examples include G for gifts and J for Other. A full list of the transaction codes can be found in the SEC Office of Investor Education and Advocacy Investor Bulletin titled ["Insider Transactions and Forms 3, 4, and 5"](https://www.sec.gov/files/forms-3-4-5.pdf).
+
+An important item of note is that a transaction will be included as long as it fulfills only one of the key words. Thus a good way to think about the key words is that they are connected by OR rather than by AND. Thus any transaction that contains "gift" or "charity" or "charitable" in the footnotes or contains the name "SMITH" or is a gift transaction will be included. 
+
+```{r, eval=FALSE}
+library(insiderTrades)
+
+dat1 <- insiderTrades::nonderivativeHoldingsPullAndScrape(quarter = 1, year = 2021, form = 4, name = "Your Name", email = "YourEmail@YourEmail.com", footnoteKeywords = c("gift", "charity", "charitable"), transactionType = "G", rptOwnerKeywords = "SMITH")
+
+
+dat2 <- insiderTrades::nonderivativeHoldingsPullAndScrape(quarter = 1, year = 2021, form = 4, name = "Your Name", email = "YourEmail@YourEmail.com", footnoteKeywords = c("gift", "charity", "charitable"))
+
+```
+
+As mentioned in the insiderTrades vignette, it takes 22-24 hours for the functions to check for keywords and wrangle the desired transactions into a dataframe for each quarter. Throughout the run, you will get percent completion updates.  
+
