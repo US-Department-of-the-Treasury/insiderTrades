@@ -55,7 +55,7 @@ words to be searched within the issuer block. Default is NA.}
 \item{issuerTradingSymbol}{The character vector containing any specified
 stock tickers. Default is NA.}
 
-\item{rptOwnerKeywords}{The character vector contianing any specified key
+\item{rptOwnerKeywords}{The character vector containing any specified key
 words to be searched within the rptOwner block. Default is NA.}
 
 \item{transactionType}{The character vector containing any specified
