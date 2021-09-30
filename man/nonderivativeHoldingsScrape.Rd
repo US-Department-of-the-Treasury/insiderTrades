@@ -54,7 +54,7 @@ dataframe.
 \description{
 The function takes the dataframe returned by
 \code{\link{secUrlDownload}} and scrapes and compiles a dataframe of all
-the nonderivative holdings that meet the keyword crtiera. If no criteria
+the nonderivative holdings that meet the keyword criteria. If no criteria
 is set, all holdings from the dataframe returned by
 \code{\link{secUrlDownload}} are scraped. Note that the logic for the
 keywords is "OR." Thus if a user sets multiple footnoteKeywords and a
