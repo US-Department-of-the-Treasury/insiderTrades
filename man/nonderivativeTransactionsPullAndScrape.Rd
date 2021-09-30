@@ -61,7 +61,7 @@ dataframe.
 \description{
 The function takes the specifieid quarter (1-4), year (2004-
 2021), and form type (4 or 5) and returns a dataframe of all
-the nonderivative transactions that meet the keyword crtiera from the
+the nonderivative transactions that meet the keyword criteria from the
 specified financial quarter. If no criteria is set, all transactions from
 the financial quarter are scraped. Note that the logic for the
 keywords is "OR." Thus if a user sets multiple footnoteKeywords and a
