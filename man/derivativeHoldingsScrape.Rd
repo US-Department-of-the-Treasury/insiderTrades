@@ -39,7 +39,7 @@ Default value is NA.}
 stock tickers.  Values must be capitalized to match against SEC values.
 Default value is NA.}
 
-\item{rptOwnerKeywords}{The character vector contianing any specified key
+\item{rptOwnerKeywords}{The character vector containing any specified key
 words to be searched within the rptOwner block.  Values must be capitalized
 to match against SEC values. Additionally, the format is LAST NAME, FIRST
 NAME. The criteria can include the individuals CIK, address, or name.
