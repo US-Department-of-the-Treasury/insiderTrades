@@ -62,3 +62,10 @@ keyword for issuerKeywords, if a holding has only one of the
 footnoteKeywords and none of the issuerKeywords, the holding will
 still be scraped.
 }
+\examples{
+\donttest{
+dat <- nonderivativeHoldingsScrape(index = tempIndex, form = 4,
+name = "Your Name", email = "yourEmail@yourEmail.com",
+rptOwnerKeywords = c("SMITH JOHN"))
+}
+}
