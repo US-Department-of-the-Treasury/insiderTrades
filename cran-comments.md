@@ -1,3 +1,17 @@
+## Resubmission
+This is a resubmission. In this version I have:
+
+* Reduced the length of the title to less than 65 characters.
+
+* Changed the start of the description to not start with "This package", 
+  package name, title or similar.
+  
+* Provided a link to the used webservices in the description field of the
+  DESCRIPTION file.
+  
+* Added small examples to the Rd-files to illustrate the use of the 
+  exported functions.
+
 ## Test environments
 * win-builder (devel and release)
 * Mac OS 11.2.1
