@@ -7,9 +7,9 @@ Authors@R:
            role = c("aut", "cre"),
            email = "joseph.hancuch@treasury.gov")
 Description: Download insider trading transactions and insider holdings 
-             from a public NoSQL SEC database using keyword criteria and 
-             generate a relational dataframe.
-             <https://www.sec.gov/Archives/edgar/full-index/>
+             from a public NoSQL SEC database 
+             (<https://www.sec.gov/Archives/edgar/full-index/>) using 
+             keyword criteria and generate a relational dataframe. 
 License: CC0
 URL: https://github.com/US-Department-of-the-Treasury/insiderTrades
 BugReports: https://github.com/US-Department-of-the-Treasury/insiderTrades/issues
