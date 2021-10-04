@@ -63,3 +63,10 @@ keyword for issuerKeywords, if a holding has only one of the
 footnoteKeywords and none of the issuerKeywords, the holding will
 still be scraped.
 }
+\examples{
+\donttest{
+dat <- nonderivativeHoldingsPullAndScrape(quarter = 1, year = 2018,
+form = 4, name = "Your Name", email = "yourEmail@yourEmail.com",
+issuerKeywords = c("AMAZON", "MICROSOFT"))
+}
+}
