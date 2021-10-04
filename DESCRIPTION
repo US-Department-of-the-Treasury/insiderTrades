@@ -1,14 +1,15 @@
 Package: insiderTrades
-Title: Tools to Download Insider Trading Transactions and Insider Holdings from a Public NoSQL SEC Database
+Title: Tools to Download Insider Transactions and Holdings
 Version: 0.0.1
 Authors@R: 
     person(given = "Joseph",
            family = "Hancuch",
            role = c("aut", "cre"),
            email = "joseph.hancuch@treasury.gov")
-Description: Tools to download insider trading transactions and insider holdings 
+Description: Download insider trading transactions and insider holdings 
              from a public NoSQL SEC database using keyword criteria and 
              generate a relational dataframe.
+             <https://www.sec.gov/Archives/edgar/full-index/>
 License: CC0
 URL: https://github.com/US-Department-of-the-Treasury/insiderTrades
 BugReports: https://github.com/US-Department-of-the-Treasury/insiderTrades/issues
