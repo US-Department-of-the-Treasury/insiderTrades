@@ -69,3 +69,10 @@ keyword for issuerKeywords, if a transaction has only one of the
 footnoteKeywords and none of the issuerKeywords, the transaction will
 still be scraped.
 }
+\examples{
+\donttest{
+dat <- derivativeTransactionsPullAndScrape(quarter = 3, year = 2012,
+form = 4, name = "Your Name", email = "yourEmail@yourEmail.com",
+issuerKeywords = c("AMAZON", "MICROSOFT"))
+}
+}
