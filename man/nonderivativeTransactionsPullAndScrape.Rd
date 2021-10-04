@@ -69,3 +69,10 @@ keyword for issuerKeywords, if a transaction has only one of the
 footnoteKeywords and none of the issuerKeywords, the transaction will
 still be scraped.
 }
+\examples{
+\donttest{
+dat <- nonderivativeHoldingsPullAndScrape(quarter = 1, year = 2018,
+form = 4, name = "Your Name", email = "yourEmail@yourEmail.com",
+rptOwnerKeywords = c("10165", "10166"))
+}
+}
