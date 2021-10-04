@@ -4,7 +4,7 @@ This is a resubmission. In this version I have:
 * Reduced the length of the title to less than 65 characters.
 
 * Changed the start of the description to not start with "This package", 
-  package name, title or similar.
+  package name, title or something similar.
   
 * Provided a link to the used webservices in the description field of the
   DESCRIPTION file.
