@@ -27,3 +27,9 @@ The function takes the specifieid quarter (1-4), year (2004-
 2021), and form type (4 or 5) and returns a dataframe of URLs to each form
 filed during the specified quarter.
 }
+\examples{
+\donttest{
+tempIndex <- secUrlDownload(quarter = 1, year = 2018, form = 4,
+form = 4, name = "Your Name", email = "yourEmail@yourEmail.com")
+}
+}
