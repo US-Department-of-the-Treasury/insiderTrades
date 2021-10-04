@@ -68,3 +68,10 @@ keyword for issuerKeywords, if a transaction has only one of the
 footnoteKeywords and none of the issuerKeywords, the transaction will
 still be scraped.
 }
+\examples{
+\donttest{
+dat <- nonderivativeTransactionsScrape(index = tempIndex, form = 4,
+name = "Your Name", email = "yourEmail@yourEmail.com",
+rptOwnerKeywords = c("SMITH JOHN"))
+}
+}
